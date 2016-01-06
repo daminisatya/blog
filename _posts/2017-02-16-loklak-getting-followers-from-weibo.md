@@ -2,7 +2,7 @@
 layout: post
 title: Loklak getting followers from weibo
 description: "My work with Fossasia, Loklak during GSoC"
-modified: 2017-02-09
+modified: 2017-02-16
 category: Google Summer of Code
 tags: [sample post]
 imagefeature: cover10.jpg

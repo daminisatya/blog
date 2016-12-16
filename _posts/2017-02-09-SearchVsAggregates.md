@@ -5,7 +5,7 @@ description: "My work with Fossasia, Loklak during GSoC"
 modified: 2017-02-09
 category: Google Summer of Code
 tags: [sample post]
-imagefeature: cover6.jpg
+imagefeature: cover1.jpg
 comments: true
 share: true
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: Convert webpages into structured data
 description: "My work with Fossasia, Loklak during GSoC"
-modified: 2017-02-09
+modified: 2017-02-15
 category: Google Summer of Code
 tags: [sample post]
 imagefeature: cover10.jpg

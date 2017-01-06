@@ -65,4 +65,4 @@ The above example gives you the answer, on using the Susi service.
 }
 {% endhighlight %}
 
-The above JSON is the result of the susi result. Woah this is how susi replies back. So the answer is here.
+The above JSON is the result of the susi result. Woah this is how susi replies back.

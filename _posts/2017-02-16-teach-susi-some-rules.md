@@ -37,3 +37,32 @@ Here is the data stub, susi_cognition_000.json, where you can teach susi all the
 The above example gives you the answer, on using the Susi service.
 
 *http://loklak.org/api/susi.json?q=i feel super happy*
+
+{% highlight css %}
+{
+  "session": {"identity": {
+    "type": "host",
+    "name": "127.0.0.1",
+    "anonymous": true
+  }},
+  "count": 1,
+  "answers": [{
+    "metadata": {
+      "hits": 1,
+      "offset": 0,
+      "count": 1
+    },
+    "data": [{
+      "0": "i feel super happy",
+      "1": "",
+      "2": "super happy"
+    }],
+    "actions": [{
+      "expression": "Why do you feel super happy?",
+      "type": "answer"
+    }]
+  }]
+}
+{% endhighlight %}
+
+The above JSON is the result of the susi result. Woah this is how susi replies back. So the answer is here.

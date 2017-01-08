@@ -18,13 +18,13 @@ Here is the data stub, susi_cognition_000.json, where you can teach susi all the
 
 {% highlight css %}
 {
-“keys“ :[“belief“],
-“score“ :1,
-“phrases“:[ {“type“:“pattern“, “expression“:“*I feel *“} ],
-“process“:[],
-“actions“:[ {“type“:“answer“, “select“:“random“, “phrases“:[
-“Why do you feel $2$?“
-]}]
+	“keys“ :[“belief“],
+	“score“ :1,
+	“phrases“:[ {“type“:“pattern“, “expression“:“*I feel *“} ],
+	“process“:[],
+	“actions“:[ {“type“:“answer“, “select“:“random“, “phrases“:[
+	“Why do you feel $2$?“
+	]}]
 },
 {% endhighlight %}
 
@@ -65,4 +65,117 @@ The above example gives you the answer, on using the Susi service.
 }
 {% endhighlight %}
 
-The above JSON is the result of the susi result. Woah this is how susi replies back.
+The above JSON is the result of the susi result. Woah this is how susi replies back. So the answer is here.
+
+{% highlight css %}
+"actions": [{
+      "expression": "Why do you feel super happy?",
+      "type": "answer"
+}]
+{% endhighlight %}
+
+The above answer format has a data
+
+This is a sample example. Let’s dive into some more rules with different formats.
+
+{% highlight css %}
+{
+	“keys“ :[“how“],
+	“score“ :100,
+	“example“:“How many mentions are on reddit about loklak“,
+	“phrases“:[ {“type“:“pattern“, “expression“:“How many mentions are on reddit about *“}
+	],
+	“process“:[ {“type“:“console“, “expression“:“SELECT COUNT(*) AS count FROM rss WHERE url=’https://www.reddit.com/search.rss?q=$1$’;“}],
+	“actions“:[ {“type“:“answer“, “select“:“random“, “phrases“:[
+	“Here you go, $count$ times!“
+	]}]
+},
+{% endhighlight %}
+
+The above example is a score 100 rule with a high priority range than the previous example. This rule will try to answer the query related to Reddit mentions of a particular tag or a name. Here are few key differences to be noted.
+
+“example” – The example key gives a sample query which is useful for understanding about the rule’s input.
+“process” – This key is being used when you have to get the data from an external service. The above example is trying to query the tables being present using the SQL syntax. It is a console type of querying where the count is being calculated from the rss table from where the data can be retrieved from the URL. (Standard format for rss reader which is being supported by loklak: https://www.reddit.com/search.rss?q=term; 
+For the above rule, susi response is this,
+
+http://loklak.org/api/susi.json?q=How many mentions are on reddit about loklak
+
+{% highlight css %}
+{
+  "session": {"identity": {
+    "type": "host",
+    "name": "127.0.0.1",
+    "anonymous": true
+  }},
+  "count": 1,
+  "answers": [{
+    "data": [{"count": 5}],
+    "metadata": {"count": 1},
+    "actions": [{
+      "expression": "Here you go, 5 times!",
+      "type": "answer"
+    }]
+  }]
+}
+{% endhighlight %}
+
+And here’s the required answer :
+
+{% highlight css %}
+"actions": [{
+      "expression": "Here you go, 5 times!",
+      "type": "answer"
+ }]
+{% endhighlight %}
+
+So till now we have seen examples where we can retrieve text answers, Here comes an example which can return a table or a list of answers.
+
+{% highlight css %}
+{
+	“keys“ :[“reddit“],
+	“score“ :100,
+	“example“:“What are the reddit articles about loklak“,
+	“phrases“:[ {“type“:“pattern“, “expression“:“* reddit * about *“}
+	],
+	“process“:[ {“type“:“console“, “expression“:“SELECT title FROM rss WHERE url=’https://www.reddit.com/search.rss?q=$3$’;“}],
+	“actions“:[ {“type“:“answer“, “select“:“random“, “phrases“:[
+	“Here is the list of articles about $3$“
+	]}, {“type“:“table“}]
+},
+{% endhighlight %}
+
+For the above result you can even mention about type being table for getting the list of data. So here is the Susi’s response
+
+http://loklak.org/api/susi.json q=What are the reddit articles about loklak
+
+{% highlight css %}
+{
+  "session": {"identity": {
+    "type": "host",
+    "name": "127.0.0.1",
+    "anonymous": true
+  }},
+  "count": 1,
+  "answers": [{
+    "data": [
+      {"title": "programming"},
+      {"title": "Datasets Archive"},
+      {"title": "We collected 1.3 billion tweets with a distributed, peer-to-peer based free, open source twitter scraper that has a nice API for your self-made apps to evaluate the data: loklak.org"},
+      {"title": "A look at Loklak.org and the Webclient progress"},
+      {"title": "#Loklak Web client Test A Twitter search engine loklak.org"}
+    ],
+    "metadata": {"count": 5},
+    "actions": [
+      {
+        "expression": "Here is the list of articles about loklak",
+        "type": "answer"
+      },
+      {"type": "table"}
+    ]
+  }]
+}
+{% endhighlight %}
+
+So the data object under answers gives you the list of titles tagged under loklak (PS: This is from Reddit)
+
+Another example for getting data, using which one can form pie charts.

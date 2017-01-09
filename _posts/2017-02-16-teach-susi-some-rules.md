@@ -251,3 +251,17 @@ Suppose the expression is of the form
 Using the above expression the following sentences can be formed. “What are the Reddit articles about Loklak” So the first set of words before reddit can be defined as $1$ variable, the set of words between reddit and about can be defined as $2$ variable and the words after about can be $3$ variable, so on. This is how the variable system works. As a whole, the complete sentence can be considered as a $0$ variable.
 
 Some important data sources for console querying
+
+ * http://loklak.org/api/console.json?q=SELECT%20text,%20screen_name,%20user.name%20AS%20user%20FROM%20messages%20WHERE%20query=%271%27;
+ * http://loklak.org/api/console.json?q=SELECT%20*%20FROM%20messages%20WHERE%20id=%27742384468560912386%27;
+ * http://loklak.org/api/console.json?q=SELECT%20link,screen_name%20FROM%20messages%20WHERE%20id=%27742384468560912386%27;
+ * http://loklak.org/api/console.json?q=SELECT%20COUNT(*)%20AS%20count,%20screen_name%20AS%20twitterer%20FROM%20messages%20WHERE%20query=%27loklak%27%20GROUP%20BY%20screen_name;
+ * http://loklak.org/api/console.json?q=SELECT%20PERCENT(count)%20AS%20percent,%20screen_name%20FROM%20(SELECT%20COUNT(*)%20AS%20count,%20screen_name%20FROM%20messages%20WHERE%20query=%27loklak%27%20GROUP%20BY%20screen_name)%20WHERE%20screen_name%20IN%20(%27leonmakk%27,%27Daminisatya%27,%27sudheesh001%27,%27shiven_mian%27);
+ * http://loklak.org/api/console.json?q=SELECT%20query,%20query_count%20AS%20count%20FROM%20queries%20WHERE%20query=%27auto%27;
+ * http://loklak.org/api/console.json?q=SELECT%20*%20FROM%20users%20WHERE%20screen_name=%270rb1t3r%27;
+ * http://loklak.org/api/console.json?q=SELECT%20place[0]%20AS%20place,%20population,%20location[0]%20AS%20lon,%20location[1]%20AS%20lat%20FROM%20locations%20WHERE%20location=%27Berlin%27;
+ * http://loklak.org/api/console.json?q=SELECT%20*%20FROM%20locations%20WHERE%20location=%2753.1,13.1%27;
+ * http://loklak.org/api/console.json?q=SELECT%20description%20FROM%20wikidata%20WHERE%20query=%27football%27;
+ * http://loklak.org/api/console.json?q=SELECT%20*%20FROM%20meetup%20WHERE%20url=%27http://www.meetup.com/?q=Women-Who-Code-Delhi%27;
+ * http://loklak.org/api/console.json?q=SELECT%20*%20FROM%20rss%20WHERE%20url=%27https://www.reddit.com/search.rss?q=loklak%27;
+ * http://loklak.org/api/console.json?q=SELECT%20*%20FROM%20eventbrite%20WHERE%20url=%27url=https://www.eventbrite.com/e/?q=global-health-security-focus-africa-tickets-25740798421%27;

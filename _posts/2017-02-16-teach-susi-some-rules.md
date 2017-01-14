@@ -179,3 +179,62 @@ http://loklak.org/api/susi.json q=What are the reddit articles about loklak
 So the data object under answers gives you the list of titles tagged under loklak (PS: This is from Reddit)
 
 Another example for getting data, using which one can form pie charts.
+
+
+{
+“keys“ :[“president“,“election“,“america“],
+“score“ :100,
+“comment“:“a statistical app which tries to predict the american presidential election“,
+“phrases“:[ {“type“:“regex“, “expression“:“Who will win the 2016 presidential election“},
+{“type“:“regex“, “expression“:“Who will (?:be|become) the next us president“}
+],
+“process“:[ {“type“:“console“, “expression“:“SELECT PERCENT(count) AS percent, hashtag AS president FROM (SELECT COUNT(*) AS count, hashtags AS hashtag FROM messages WHERE query=’election2016′ GROUP BY hashtags) WHERE hashtag IN (‘hillaryclinton’,’berniesanders’,’donaldtrump’);“}],
+“actions“:[ {“type“:“answer“, “select“:“random“, “phrases“:[
+“I believe the next president will be $president$ with a likelihood of $percent$ percent but I a not sure.“,
+“I can calculate a likelihood, here is my guess:“
+]},
+{“type“:“piechart“, “total“:100, “key“: “country“, “value“:“percent“, “unit“:“%“}]
+},
+
+So the above example gives you the predictions for the US elections. Here you go, Susi’s response.
+
+http://loklak.org/api/susi.json?q=Who will win the 2016 presidential election
+
+{
+  "session": {"identity": {
+    "type": "host",
+    "name": "10.67.93.57",
+    "anonymous": true
+  }},
+  "count": 1,
+  "answers": [{
+    "metadata": {
+      "hits": 21,
+      "offset": 0,
+      "count": 2
+    },
+    "data": [
+      {
+        "percent": 50,
+        "president": "hillary2016"
+      },
+      {
+        "percent": 50,
+        "president": "trump2016"
+      }
+    ],
+    "actions": [
+      {
+        "expression": "I believe the next president will be hillary2016 with a likelihood of 50.0 percent but I a not sure.",
+        "type": "answer"
+      },
+      {
+        "total": 100,
+        "unit": "%",
+        "type": "piechart",
+        "value": "percent",
+        "key": "country"
+      }
+    ]
+  }]
+}

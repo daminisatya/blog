@@ -98,7 +98,7 @@ The above example is a score 100 rule with a high priority range than the previo
 “process” – This key is being used when you have to get the data from an external service. The above example is trying to query the tables being present using the SQL syntax. It is a console type of querying where the count is being calculated from the rss table from where the data can be retrieved from the URL. (Standard format for rss reader which is being supported by loklak: https://www.reddit.com/search.rss?q=term; 
 For the above rule, susi response is this,
 
-http://loklak.org/api/susi.json?q=How many mentions are on reddit about loklak
+*http://loklak.org/api/susi.json?q=How many mentions are on reddit about loklak*
 
 {% highlight css %}
 {
@@ -146,7 +146,7 @@ So till now we have seen examples where we can retrieve text answers, Here comes
 
 For the above result you can even mention about type being table for getting the list of data. So here is the Susi’s response
 
-http://loklak.org/api/susi.json q=What are the reddit articles about loklak
+*http://loklak.org/api/susi.json q=What are the reddit articles about loklak*
 
 {% highlight css %}
 {
@@ -180,26 +180,28 @@ So the data object under answers gives you the list of titles tagged under lokla
 
 Another example for getting data, using which one can form pie charts.
 
-
+{% highlight css %}
 {
-“keys“ :[“president“,“election“,“america“],
-“score“ :100,
-“comment“:“a statistical app which tries to predict the american presidential election“,
-“phrases“:[ {“type“:“regex“, “expression“:“Who will win the 2016 presidential election“},
-{“type“:“regex“, “expression“:“Who will (?:be|become) the next us president“}
-],
-“process“:[ {“type“:“console“, “expression“:“SELECT PERCENT(count) AS percent, hashtag AS president FROM (SELECT COUNT(*) AS count, hashtags AS hashtag FROM messages WHERE query=’election2016′ GROUP BY hashtags) WHERE hashtag IN (‘hillaryclinton’,’berniesanders’,’donaldtrump’);“}],
-“actions“:[ {“type“:“answer“, “select“:“random“, “phrases“:[
-“I believe the next president will be $president$ with a likelihood of $percent$ percent but I a not sure.“,
-“I can calculate a likelihood, here is my guess:“
-]},
-{“type“:“piechart“, “total“:100, “key“: “country“, “value“:“percent“, “unit“:“%“}]
+	“keys“ :[“president“,“election“,“america“],
+	“score“ :100,
+	“comment“:“a statistical app which tries to predict the american presidential election“,
+	“phrases“:[ {“type“:“regex“, “expression“:“Who will win the 2016 presidential election“},
+	{“type“:“regex“, “expression“:“Who will (?:be|become) the next us president“}
+	],
+	“process“:[ {“type“:“console“, “expression“:“SELECT PERCENT(count) AS percent, hashtag AS president FROM (SELECT COUNT(*) AS count, hashtags AS hashtag FROM messages WHERE query=’election2016′ GROUP BY hashtags) WHERE hashtag IN (‘hillaryclinton’,’berniesanders’,’donaldtrump’);“}],
+	“actions“:[ {“type“:“answer“, “select“:“random“, “phrases“:[
+	“I believe the next president will be $president$ with a likelihood of $percent$ percent but I a not sure.“,
+	“I can calculate a likelihood, here is my guess:“
+	]},
+	{“type“:“piechart“, “total“:100, “key“: “country“, “value“:“percent“, “unit“:“%“}]
 },
+{% endhighlight %}
 
 So the above example gives you the predictions for the US elections. Here you go, Susi’s response.
 
-http://loklak.org/api/susi.json?q=Who will win the 2016 presidential election
+*http://loklak.org/api/susi.json?q=Who will win the 2016 presidential election*
 
+{% highlight css %}
 {
   "session": {"identity": {
     "type": "host",
@@ -238,3 +240,4 @@ http://loklak.org/api/susi.json?q=Who will win the 2016 presidential election
     ]
   }]
 }
+{% endhighlight %}

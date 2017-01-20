@@ -241,3 +241,13 @@ So the above example gives you the predictions for the US elections. Here you go
   }]
 }
 {% endhighlight %}
+
+Important Nomenclature for defining the variables
+
+Suppose the expression is of the form
+
+"* reddit * about *"
+
+Using the above expression the following sentences can be formed. “What are the Reddit articles about Loklak” So the first set of words before reddit can be defined as $1$ variable, the set of words between reddit and about can be defined as $2$ variable and the words after about can be $3$ variable, so on. This is how the variable system works. As a whole, the complete sentence can be considered as a $0$ variable.
+
+Some important data sources for console querying

@@ -252,6 +252,7 @@ Using the above expression the following sentences can be formed. “What are th
 
 Some important data sources for console querying
 
+{% highlight css %}
  * http://loklak.org/api/console.json?q=SELECT%20text,%20screen_name,%20user.name%20AS%20user%20FROM%20messages%20WHERE%20query=%271%27;
  * http://loklak.org/api/console.json?q=SELECT%20*%20FROM%20messages%20WHERE%20id=%27742384468560912386%27;
  * http://loklak.org/api/console.json?q=SELECT%20link,screen_name%20FROM%20messages%20WHERE%20id=%27742384468560912386%27;
@@ -265,6 +266,7 @@ Some important data sources for console querying
  * http://loklak.org/api/console.json?q=SELECT%20*%20FROM%20meetup%20WHERE%20url=%27http://www.meetup.com/?q=Women-Who-Code-Delhi%27;
  * http://loklak.org/api/console.json?q=SELECT%20*%20FROM%20rss%20WHERE%20url=%27https://www.reddit.com/search.rss?q=loklak%27;
  * http://loklak.org/api/console.json?q=SELECT%20*%20FROM%20eventbrite%20WHERE%20url=%27url=https://www.eventbrite.com/e/?q=global-health-security-focus-africa-tickets-25740798421%27;
+{% endhighlight %}
 
 The above are the supported data stores and queries. You can have a look at ConsoleService.java
 
@@ -272,13 +274,13 @@ That’s it and this is how you can train Susi and teach her rules !
 
 These would be useful for knowing more about Susi.
 
-What is Susi?
+*What is Susi?*
 
 Susi is an artificial intelligence combining pattern matching, internet data, data flow principles and inference engine principles. It will have some reflection abilities and it will be able to remember the users input to produce deductions and a personalized feed-back.
 
-Why is it built?
+*Why is it built?*
 
 To create a personal assistant software like Siri and Cortana, made by the people for the people. Its an free software open mind which expands with the help of it’s users.
-What is it’s purpose?
+*What is it’s purpose?*
 
 To explore the abilities of an artificial companion and to answer the remaining unanswered questions.

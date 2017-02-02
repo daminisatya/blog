@@ -14,11 +14,11 @@ This blog post aims at sharing the details on how Susi got it’s custom interfa
 
 Handlebars – Why only handlebars? This templating framework helps you to reproduce the chat bubbles without much hassle. Two script blocks with embedded handlebar expressions will do it all. This ensures less front end code without any break in the bubbles template.
 
-![searchVsAggregate]({{ site.url }}/images/about/searchVsAggregate_1.png)
+![susi]({{ site.url }}/images/about/susi_1.png)
 
 This above template is for displaying the user’s message from the send DOM.
 
-![searchVsAggregate]({{ site.url }}/images/about/searchVsAggregate_1.png)
+![susi]({{ site.url }}/images/about/susi_2.png)
 
 This above template is used for binding the Susi’s response into the chat bubble. Every time the request is triggered when the user send’s out a query that is the chat message. For example Hi Susi and Susi responses back saying Hello!. So the response is triggered when the user types in the message and Susi queries using the following URL.
 
@@ -26,15 +26,15 @@ This above template is used for binding the Susi’s response into the chat bubb
 
 That is how the Template is being embedded into the interface. Along with that Susi is given a separate avatar or artwork and here is one.
 
-![searchVsAggregate]({{ site.url }}/images/about/searchVsAggregate_1.png)
+![susi]({{ site.url }}/images/about/susi_3.png)
 
 JQuery – We used JQuery for handling the requests and constantly query the Susi API for the answers. This handles the calls very swiftly and the response time is very quick.
 
-![searchVsAggregate]({{ site.url }}/images/about/searchVsAggregate_1.png)
+![susi]({{ site.url }}/images/about/susi_4.png)
 
 In the above code snippet the request is being handled and the response is queried accordingly for the answer. For example, this is the sample JSON
 
-![searchVsAggregate]({{ site.url }}/images/about/searchVsAggregate_1.png)
+![susi]({{ site.url }}/images/about/susi_5.png)
 
 The above JSON is the response when we type “Hello” into Susi’s chat interface. We track down to expression for the actual answer to be provided.
 

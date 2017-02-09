@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SEARCH VS AGGREGATIONS
+title: Search vs Aggregations
 description: "My work with Fossasia, Loklak during GSoC"
 modified: 2017-02-09
 category: Google Summer of Code
